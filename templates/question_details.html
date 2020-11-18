@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Question Details
+{% endblock %}
+
+{% block page_content %}
+
+<div class="row">
+    <div class="col-md-9">
+        <div style="width: 100%; display: flex; justify-content: space-around;">
+            <a href="#" class="btn btn-primary btn-lg" role="button" style="width: 100%; margin: 5px;"><span class="glyphicon glyphicon-tag"></span> <br/>Question ID: {{ questions[0].id }}</a>
+            <a href="#" class="btn btn-danger btn-lg" role="button" style="width: 100%; margin: 5px;"><span class="glyphicon glyphicon-list-alt"></span> <br/>Category: 
+                {% if questions[0].category == "1" %}
+                General
+                {% elif questions[0].category == "2" %}
+                Scratch
+                {% elif questions[0].category == "3" %}
+                C
+                {% elif questions[0].category == "4" %}
+                Python
+                {% elif questions[0].category == "5" %}
+                SQL
+                {% elif questions[0].category == "6" %}
+                HTML
+                {% elif questions[0].category == "7" %}
+                CSS
+                {% elif questions[0].category == "8" %}
+                JavaScript
+                {% elif questions[0].category == "9" %}
+                Algorithms
+                {% else %}
+                Data Structures
+                {% endif %}
+            </a>
+            <a href="#" class="btn btn-success btn-lg" role="button" style="width: 100%; margin: 5px;"><span class="glyphicon glyphicon-bookmark"></span> <br/>Difficulty: 
+                {% if questions[0].difficulty == 1 %}
+                Easy
+                {% elif questions[0].difficulty == 2 %}
+                Medium
+                {% else %}
+                Difficult
+                {% endif %}
+            </a>
+        </div>
+        <br />
+        <br />
+
+        <p style="text-align: left;font-size:16px;"><b>Question:</b> {{ questions[0].question_text }}</p>
+        <p style="text-align: left;font-size:16px;"><b>Answer:</b> {{ questions[0].answer }}</p>
+        <p style="text-align: left;font-size:16px;"><b>Added by:</b> {{ questions[0].author.username }} <b>on</b> {{ questions[0].timestamp }}</p>
+    </div>
+</div>
+<br />
+<br />
+
+<div class="col-sm-12 controls" style="display: inline-block;">
+    <a href="{{ url_for('edit_question_form', question_id=questions[0].id) }}" class="btn btn-warning" role="button" style="margin-left:-850px; font-size:16px;">Edit question</a>
+    <a href="/questions" class="btn btn-info" role="button" style="margin-left:10px; font-size:16px;">Go back</a>
+</div>
+{% endblock %}

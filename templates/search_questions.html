@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Search Results
+{% endblock %}
+
+{% block page_content %}
+<h3 style="text-align: left;">The number of search results for "{{ search_term }}": {{ results.count }}</h3>
+
+<br />
+<br />
+
+<div class="message">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Question</th>
+                <th scope="col">Category</th>
+                <th scope="col">Difficulty</th>
+                <th scope="col">Details</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in results.data %}
+            <tr>
+                <th scope="row">{{ question.id }}</th>
+                <td>{{ question.question_text }}</td>
+                <td>{% if question.category == "1" %}
+                    General
+                    {% elif question.category == "2" %}
+                    Scratch
+                    {% elif question.category == "3" %}
+                    C
+                    {% elif question.category == "4" %}
+                    Python
+                    {% elif question.category == "5" %}
+                    SQL
+                    {% elif question.category == "6" %}
+                    HTML
+                    {% elif question.category == "7" %}
+                    CSS
+                    {% elif question.category == "8" %}
+                    JavaScript
+                    {% elif question.category == "9" %}
+                    Algorithms
+                    {% else %}
+                    Data Structures
+                    {% endif %}</td>
+                <td>{% if question.difficulty == 1 %}
+                    Easy
+                    {% elif question.difficulty == 2 %}
+                    Medium
+                    {% else %}
+                    Difficult
+                    {% endif %}
+                </td>
+                <td><a href="{{ url_for('get_question', question_id=question.id) }}">View Details</a></td>
+                <td><a href="{{ url_for('edit_question_form', question_id=question.id) }}">Edit Question</a></td>
+            </tr>
+    
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    {% if pagination %}
+    {{ macros.pagination_widget(pagination, 'get_questions', fragment='#questions', question_id=questions[0].id) }}
+    {% endif %}
+</div>
+
+{% endblock %}

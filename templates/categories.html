@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}
+Categories
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    Hello,
+    {% if current_user.is_authenticated %}
+        {{ current_user.username }}
+    {% else %}
+        Stranger
+    {% endif %}
+</div>
+
+<br />
+
+<h2 style="text-align: left;">Categories</h2>
+
+<div class="message">
+{% if current_user.is_authenticated %}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Category</th>
+                <th scope="col">When created</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <th scope="row">{{ category.id }}</th>
+                <td>{{ category.type }}</td>
+                <td>{{ category.timestamp }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+

@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}
+Questions
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    Hello,
+    {% if current_user.is_authenticated %}
+        {{ current_user.username }}
+    {% else %}
+        Stranger
+
+        <br />
+        <hr />
+        <div style="font-size: 18px; text-align: left;">
+            <a href="/register">Create an account</a> to view questions or <a href="/login">sign in</a> if you already have an account in CS50 Study.
+        </div>
+        <br />
+        <img src="/static/learning.jpg" alt="Learning" style="text-align: left;">
+
+    {% endif %}
+</div>
+
+<br />
+
+{% if current_user.is_authenticated %}
+<h2 style="text-align: left;">Questions</h2>
+<div class="message">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Question</th>
+                <th scope="col">Category</th>
+                <th scope="col">Difficulty</th>
+                <th scope="col">Details</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <th scope="row">{{ question.id }}</th>
+                <td>{{ question.question_text }}</td>
+                <td>{% if question.category == "1" %}
+                    General
+                    {% elif question.category == "2" %}
+                    Scratch
+                    {% elif question.category == "3" %}
+                    C
+                    {% elif question.category == "4" %}
+                    Python
+                    {% elif question.category == "5" %}
+                    SQL
+                    {% elif question.category == "6" %}
+                    HTML
+                    {% elif question.category == "7" %}
+                    CSS
+                    {% elif question.category == "8" %}
+                    JavaScript
+                    {% elif question.category == "9" %}
+                    Algorithms
+                    {% else %}
+                    Data Structures
+                    {% endif %}</td>
+                <td>{% if question.difficulty == 1 %}
+                    Easy
+                    {% elif question.difficulty == 2 %}
+                    Medium
+                    {% else %}
+                    Difficult
+                    {% endif %}
+                </td>
+                <td><a href="{{ url_for('get_question', question_id=question.id) }}">View Details</a></td>
+                <td><a href="{{ url_for('edit_question_form', question_id=question.id) }}">Edit Question</a></td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if pagination %}
+    {{ macros.pagination_widget(pagination, 'get_questions', fragment='#questions', question_id=questions[0].id) }}
+    {% endif %}
+
+    <br />
+
+    <a href="/questions/add" class="btn btn-success" role="button" style="margin-left:0px; font-size:16px;">Add question</a>
+
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+

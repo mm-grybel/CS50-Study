@@ -1,0 +1,82 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}CS50 Study: {% endblock %}
+
+{% block head %}
+{{ super() }}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+    <link href="/static/favicon.ico" rel="icon">
+
+    <link href="/static/styles.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-md navbar-light bg-light border">
+        <a class="navbar-brand" href="/"><span class="blue">C</span><span class="red">S</span><span class="yellow">5</span><span class="green">0</span> <span class="red">Study</span></a>
+        <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+        {% if current_user.is_authenticated %}
+            <ul class="navbar-nav mr-auto mt-2">
+                <li class="nav-item"><a class="nav-link" href="/questions">Questions</a></li>
+                <li class="nav-item"><a class="nav-link" href="/categories">Categories</a></li>
+            </ul>
+
+            <div class="col-sm-3 col-md-3" style="margin-left:-750px; font-size: 14px; position: relative; padding-right: 15px; padding-left: 15px; box-sizing: border-box;">
+                <form action="/questions/search" method="post" class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="search_term" style="display: inline-block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.428571429; vertical-align: middle; border: 1px solid #ccc; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0,0,0,0.075); transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit" style="border: 1px solid #ccc; border-radius: 4px;"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+                </form>
+            </div>
+            
+            <ul class="navbar-nav ml-auto mt-2">
+                <li class="nav-item"><a class="nav-link" href="/logout">Sign Out</a></li>
+            </ul>
+        {% else %}
+            <ul class="navbar-nav ml-auto mt-2">
+                <li class="nav-item"><a class="nav-link" href="/register">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Sign In</a></li>
+            </ul>
+        {% endif %}
+        </div>
+    </nav>    
+{% endblock %}
+
+{% block content %}
+    <main class="container p-5">
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-primary border text-center" role="alert" style="font-size:16px;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock page_content %}
+    </main>
+    
+    <footer class="small text-center text-muted">
+        &#169; 2020 CS50 Study
+    </footer>
+{% endblock content %}
+
+{% block scripts %}
+{{ super()  }}
+{% endblock %}

@@ -1,0 +1,126 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    display: inline-block;
+    height: 34px;
+    width: 100%;
+    font-size: 14px;
+    padding: 6px 12px;
+    line-height: 150%;
+    border: 1px solic #ccc;
+    border-radius: 4px;
+    color: #555;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+
+
+    /* center form controls 
+    display: inline-block; */
+
+    /* override Bootstrap's 100% width for form controls 
+    width: auto;*/
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+
+    
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 10%;
+}
+
+a.nav-link
+{
+    color: #00000080;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    box-sizing: border-box;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    display: block;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+footer.small.text-center.text-muted {
+    padding-top: 30px;
+    color: #6C757D;
+    font-size: 15px;
+}
+
+.btn {
+    display: inline-block;
+    margin-left: -220px;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.page-header
+{
+    font-size: 22px;
+    text-align: left;
+}
+
+.message {
+    font-size: 16px;
+    text-align: left;
+}

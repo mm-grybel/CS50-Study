@@ -9,7 +9,7 @@ To access the CS50 Study, you need to create a new user account. During registra
 - an email,
 - a password.
 
-## Sign In
+### Sign In
 
 Once you have created a user account, you can sign in to start using the application. To sign in, you need to type your email and password provided during registration.  
 

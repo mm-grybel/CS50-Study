@@ -7,7 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, lookup
 from models import db, login_manager, setup_db, User, Question, Category
 from forms import LoginForm, RegistrationForm, QuestionForm, CategoryForm
 from config import config
@@ -46,7 +45,6 @@ def index():
         error_out=False)
     questions = pagination.items
     return render_template('questions.html', questions=questions, pagination=pagination)
-
 
 
 # ------------------- AUTH -----------------------
@@ -150,7 +148,6 @@ def edit_question_form(question_id):
     return render_template('edit_question.html', form=form, questions=[question])
 
 
-
 @APP.route("/questions/<int:question_id>/edit", methods=["POST"])
 @login_required
 def edit_question_submission(question_id):
@@ -188,7 +185,6 @@ def search_questions():
     }
 
     return render_template('search_questions.html', results=response, search_term=request.form.get('search_term', ''))
-
 
 
 # ------------------- CATEGORIES -----------------------

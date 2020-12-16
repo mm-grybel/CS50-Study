@@ -4,8 +4,6 @@ from flask_bootstrap import Bootstrap
 from flask_login import login_user, logout_user, login_required, current_user
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
-from werkzeug.security import check_password_hash, generate_password_hash
 
 from models import db, login_manager, setup_db, User, Question, Category
 from forms import LoginForm, RegistrationForm, QuestionForm, CategoryForm

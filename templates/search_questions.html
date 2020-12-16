@@ -1,15 +1,12 @@
 {% extends "layout.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}
-Search Results
-{% endblock %}
+{% block title %}Search Results{% endblock %}
 
 {% block page_content %}
 <h3 style="text-align: left;">The number of search results for "{{ search_term }}": {{ results.count }}</h3>
 
-<br />
-<br />
+<br /><br />
 
 <div class="message">
     <table class="table">

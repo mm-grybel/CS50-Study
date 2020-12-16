@@ -1,14 +1,13 @@
+from functools import partial
+from sqlalchemy import orm
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
 from wtforms import ValidationError
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 
 from models import User, Question, Category
 from exceptions import ValidationError
-
-from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from functools import partial
-from sqlalchemy import orm
 
 
 def get_category(columns=None):

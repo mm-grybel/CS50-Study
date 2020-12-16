@@ -2,9 +2,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "_macros.html" as macros %}
 
-{% block title %}
-Categories
-{% endblock %}
+{% block title %}Categories{% endblock %}
 
 {% block page_content %}
 <div class="page-header">
@@ -15,11 +13,8 @@ Categories
         Stranger
     {% endif %}
 </div>
-
 <br />
-
 <h2 style="text-align: left;">Categories</h2>
-
 <div class="message">
 {% if current_user.is_authenticated %}
     <table class="table">

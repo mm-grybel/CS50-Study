@@ -2,9 +2,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "_macros.html" as macros %}
 
-{% block title %}
-Questions
-{% endblock %}
+{% block title %}Questions{% endblock %}
 
 {% block page_content %}
 <div class="page-header">
@@ -24,7 +22,6 @@ Questions
 
     {% endif %}
 </div>
-
 <br />
 
 {% if current_user.is_authenticated %}
@@ -88,7 +85,6 @@ Questions
     {% endif %}
 
     <br />
-
     <a href="/questions/add" class="btn btn-success" role="button" style="margin-left:0px; font-size:16px;">Add question</a>
 
 </div>

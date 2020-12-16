@@ -1,16 +1,10 @@
 import os
-import bleach
 from datetime import datetime
 from flask import current_app, url_for
-from flask_login import UserMixin
-from flask_login import LoginManager
+from flask_login import UserMixin, LoginManager
 from flask_sqlalchemy import SQLAlchemy
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from markdown import markdown
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from os import getenv
-from flask_sqlalchemy import SQLAlchemy
 import config
 
 
